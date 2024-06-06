@@ -1,8 +1,12 @@
-// import { Schema, model, connect } from 'mongoose';
+import { Types } from 'mongoose';
 
-import { Types } from "mongoose";
+export type TUserName = {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+};
 
-export type Guardian = {
+export type TGuardian = {
   fatherName: string;
   fatherOccupation: string;
   fatherContactNo: string;
@@ -11,32 +15,30 @@ export type Guardian = {
   motherContactNo: string;
 };
 
-export type UserName = {
-  firstName: string;
-  middleName: string;
-  lastName: string;
-};
-
-export type LocalGuardian = {
+export type TLocalGuardian = {
   name: string;
   occupation: string;
   contactNo: string;
   address: string;
 };
+
 export type TStudent = {
   id: string;
-  user: Types.ObjectId,
-  name: UserName;
-  gender: "male" | "female";
+  user: Types.ObjectId;
+  password: string;
+  name: TUserName;
+  gender: 'male' | 'female' | 'other';
   dateOfBirth?: Date;
   email: string;
   contactNo: string;
   emergencyContactNo: string;
-  bloodGroup?: "A+" | "A-" | "B+" | "B-" | "O+" | "O-" | "AB+" | "AB-";
+  bloogGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   presentAddress: string;
-  parmanentAddress: string;
-  guardian: Guardian;
-  localGuardian: LocalGuardian;
+  permanentAddress: string;
+  guardian: TGuardian;
+  localGuardian: TLocalGuardian;
+  profileImg?: string;
   admissionSemester: Types.ObjectId;
-  profileImage?: string;
+  isDeleted: boolean;
+  academicDepartment: Types.ObjectId;
 };
