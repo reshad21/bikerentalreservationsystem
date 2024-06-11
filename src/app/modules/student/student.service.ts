@@ -130,6 +130,8 @@ const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
 };
 
 const getSingleStudentFromDB = async (id: string) => {
+  console.log(id);
+
   const result = await Student.findOne({ id })
     .populate('admissionSemester')
     .populate({
